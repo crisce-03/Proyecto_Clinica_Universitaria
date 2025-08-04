@@ -1,0 +1,61 @@
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+
+html {
+    font-size: 25px;
+    overflow-y: auto;
+}
+
+
+
+body {
+    font-size: 22px;
+    overflow-y: auto;
+}
+
+/* Para tablets (pantallas medianas) */
+@media (max-width: 992px) {
+    html {
+        font-size: 20px;
+    }
+}
+
+/* Para celulares (pantallas pequeñas) */
+@media (max-width: 576px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+/* Para tablets (pantallas medianas) */
+@media (max-width: 992px) {
+    body {
+        font-size: 18px;
+    }
+}
+
+/* Para celulares (pantallas pequeñas) */
+@media (max-width: 576px) {
+    body {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 576px) {
+    .ms-sm-240 {
+        margin-left: 240px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    #sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+        #sidebar.show {
+            transform: translateX(0%);
+        }
+}

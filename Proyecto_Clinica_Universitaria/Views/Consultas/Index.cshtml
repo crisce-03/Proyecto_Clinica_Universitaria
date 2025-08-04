@@ -1,0 +1,136 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<main class="p-3">
+
+    <div class="p-3 bg-white border-bottom">
+            <form class="row justify-content-start">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Buscar paciente">
+                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                    </div>
+                </div>
+            </form>
+    </div>
+
+    <div class="container-fluid">
+
+
+        <section class="row">
+
+            <article class="col-md-6 p-3 border-end bg-white">
+                <h5 class="mb-4">Datos del Paciente</h5>
+                <form>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="codigo" class="form-label">Código</label>
+                            <input type="text" class="form-control" id="codigo">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="paciente" class="form-label">Paciente</label>
+                            <input type="text" class="form-control" id="paciente">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="cedula" class="form-label">Cédula</label>
+                            <input type="text" class="form-control" id="cedula">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="apellido" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="apellido">
+                        </div>
+                    </div>
+                </form>
+            </article>
+
+
+            <article class="col-md-6 p-3 bg-white">
+                <h5 class="mb-4">Datos Médicos</h5>
+                <form>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="fecha" class="form-label">Fecha</label>
+                            <input type="date" class="form-control" id="fecha">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="temperatura" class="form-label">Temperatura</label>
+                            <input type="text" class="form-control" id="temperatura">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="pulso" class="form-label">Pulso</label>
+                            <input type="text" class="form-control" id="pulso">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="peso" class="form-label">Peso</label>
+                            <input type="text" class="form-control" id="peso">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="presion" class="form-label">Presión</label>
+                            <input type="text" class="form-control" id="presion">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="swat2" class="form-label">SWAT 2</label>
+                            <input type="text" class="form-control" id="swat2">
+                        </div>
+                    </div>
+                </form>
+            </article>
+        </section>
+
+
+        <section class="bg-white p-3 mt-4 rounded">
+            <h6 class="mb-3">Recordatorio</h6>
+            <textarea class="form-control" rows="3"></textarea>
+        </section>
+
+
+        <section class="bg-white p-3 mt-4 rounded">
+            <h6 class="mb-3">Diagnóstico</h6>
+            <div class="mb-3">
+                <label for="evolucion" class="form-label">Evolución</label>
+                <textarea class="form-control" id="evolucion" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="prescripcion" class="form-label">Prescripción</label>
+                <textarea class="form-control" id="prescripcion" rows="3"></textarea>
+            </div>
+        </section>
+
+
+        <section class="d-flex flex-wrap justify-content-center gap-3 mt-4 p-3 bg-white rounded">
+            <button class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;">
+                <i class="bi bi-plus-circle"></i>
+                <span class="d-none d-md-inline">Nuevo</span>
+            </button>
+            <button class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;">
+                <i class="bi bi-pen"></i>
+                <span class="d-none d-md-inline">Editar</span>
+            </button>
+            <button class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;">
+                <i class="bi bi-file-earmark-excel-fill"></i>
+                <span class="d-none d-md-inline">Eliminar</span>
+            </button>
+            <button class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;">
+                <i class="bi bi-save"></i>
+                <span class="d-none d-md-inline">Guardar</span>
+            </button>
+        </section>
+
+
+    </div>
+</main>
