@@ -1,22 +1,25 @@
 ﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
-
 }
 
 @model Proyecto_Clinica_Universitaria.Models.MedicosEspecialidadModel
 
-<form asp-action="Guardar" asp-controller="MedicosEspecialidad" method="post">
+@if (TempData["Mensaje"] != null)
+{
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        @TempData["Mensaje"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<form asp-action="GuardarOEditar" asp-controller="MedicosEspecialidad" method="post" id="mainForm">
     <section class="bg-white rounded min-vh-100 d-flex justify-content-center align-items-center w-100">
         <div class="container-fluid text-center">
 
-            <!-- Primera fila: Buscador y opciones -->
             <div class="row g-3">
-                <!-- Buscador y checkbox -->
                 <div class="col-12 col-lg-9">
                     <div class="text-start">
-                        <!-- Barra Búsqueda -->
                         <div class="p-3 bg-white border-bottom">
                             <div class="row justify-content-start">
                                 <div class="col-md-6">
@@ -27,42 +30,19 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- CheckBox Eliminar -->
-                        <div class="form-check mt-3">
-                            <input class="form-check-input" type="checkbox" id="eliminarCheck">
-                            <label class="form-check-label" for="eliminarCheck">ELIMINAR</label>
-                        </div>
                     </div>
                 </div>
 
-                <!-- Info lateral y botones -->
                 <div class="col-12 col-lg-3">
-                    <div class="shadow-lg p-3 mb-3  rounded">
-                        <div class="text-end">1</div>
+                    <div class="shadow-lg p-3 mb-3 rounded">
+                        <div class="text-end" id="codigoDisplay"></div>
                         <hr class="my-2">
                         <div class="text-start">ESPECIALIDAD</div>
                     </div>
-
-
-                    <!-- Botones laterales -->
-                    <div class="d-flex justify-content-center gap-2 flex-wrap">
-                        <button class="btn btn-dark d-flex align-items-center justify-content-center gap-2 px-3 flex-grow-1" style="min-width: 140px;">
-                            <i class="bi bi-printer"></i>
-                            <span class="d-none d-md-inline">IMPRIMIR</span>
-                        </button>
-                        <button class="btn btn-dark d-flex align-items-center justify-content-center gap-2 px-3 flex-grow-1" style="min-width: 140px;">
-                            <i class="bi bi-file-earmark-excel"></i>
-                            <span class="d-none d-md-inline">EXCEL</span>
-                        </button>
-                    </div>
-
-
                 </div>
             </div>
 
-            <!-- Segunda fila: tabla y formulario -->
             <div class="row mt-4 g-3">
-                <!-- Tabla -->
                 <div class="col-12 col-lg-9">
                     <div class="table-responsive">
                         <table class="table table-bordered">
@@ -73,47 +53,54 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Medicina General</td>
-                                    <td>Medicina Moderna</td>
-                                </tr>
+                                @if (ViewBag.ListaEspecialidades != null)
+                                {
+                                    @foreach (var item in ViewBag.ListaEspecialidades as List<Proyecto_Clinica_Universitaria.Models.MedicosEspecialidadModel>)
+                                    {
+                                        <tr class="fila-especialidad" data-codigo="@item.Codigo" data-especialidad="@item.Especialidad" data-descripcion="@item.Descripcion">
+                                            <td>@item.Especialidad</td>
+                                            <td>@item.Descripcion</td>
+                                        </tr>
+                                    }
+                                }
                             </tbody>
                         </table>
                     </div>
                 </div>
 
-                <!-- Formulario -->
                 <div class="col-12 col-lg-3">
                     <div class="mb-3">
                         <label class="form-label">CÓDIGO</label>
-                        <input type="text" asp-for="Codigo" readonly class="form-control">
+                        <input type="text" asp-for="Codigo" readonly class="form-control" />
                     </div>
                     <div class="mb-3">
                         <label class="form-label">OCUPACIÓN</label>
-                        <input type="text" asp-for="Especialidad" class="form-control">
+                        <input type="text" asp-for="Especialidad" class="form-control" disabled />
                     </div>
                     <div class="mb-3">
                         <label class="form-label">DESCRIPCIÓN</label>
-                        <textarea class="form-control" asp-for="Descripcion" rows="3"></textarea>>
+                        <textarea class="form-control" asp-for="Descripcion" rows="3" disabled></textarea>
                     </div>
                 </div>
             </div>
 
-            <!-- Botones de acción -->
             <div class="d-flex flex-wrap justify-content-center gap-3 mt-4 p-3 bg-white rounded">
-                <button class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;">
+                <button type="button" id="btnNuevo" class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;">
                     <i class="bi bi-plus-circle"></i>
                     <span class="d-none d-md-inline">Nuevo</span>
                 </button>
-                <button class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;">
-                    <i class="bi bi-pen"></i>
+
+                <button type="button" id="btnEditar" class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;" disabled>
+                    <i class="bi bi-pencil"></i>
                     <span class="d-none d-md-inline">Editar</span>
                 </button>
-                <button class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;">
-                    <i class="bi bi-file-earmark-excel-fill"></i>
+
+                <button type="button" id="btnEliminar" class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;" disabled>
+                    <i class="bi bi-trash"></i>
                     <span class="d-none d-md-inline">Eliminar</span>
                 </button>
-                <button type="submit" class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;">
+
+                <button type="submit" id="btnGuardar" class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;" disabled>
                     <i class="bi bi-save"></i>
                     <span class="d-none d-md-inline">Guardar</span>
                 </button>
@@ -122,3 +109,114 @@
     </section>
 </form>
 
+<form id="formEliminar" asp-action="Eliminar" asp-controller="MedicosEspecialidad" method="post">
+    <input type="hidden" name="codigo" id="codigoEliminar" />
+</form>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const filas = document.querySelectorAll(".fila-especialidad");
+        const codigoInput = document.querySelector("input[name='Codigo']");
+        const especialidadInput = document.querySelector("input[name='Especialidad']");
+        const descripcionTextarea = document.querySelector("textarea[name='Descripcion']");
+        const btnNuevo = document.getElementById("btnNuevo");
+        const btnEditar = document.getElementById("btnEditar");
+        const btnEliminar = document.getElementById("btnEliminar");
+        const btnGuardar = document.getElementById("btnGuardar");
+        const buscadorInput = document.querySelector("input[placeholder='Buscar paciente']");
+        const formEliminar = document.getElementById("formEliminar");
+        const codigoDisplay = document.getElementById("codigoDisplay");
+
+        function resetForm() {
+            codigoInput.value = '';
+            especialidadInput.value = '';
+            descripcionTextarea.value = '';
+            especialidadInput.disabled = true;
+            descripcionTextarea.disabled = true;
+            btnGuardar.disabled = true;
+            btnEditar.disabled = true;
+            btnEliminar.disabled = true;
+            filas.forEach(fila => fila.classList.remove("table-active"));
+            codigoDisplay.textContent = ""; // Limpia el display del código
+        }
+
+        function habilitarParaNuevo() {
+            resetForm();
+            especialidadInput.disabled = false;
+            descripcionTextarea.disabled = false;
+            btnGuardar.disabled = false;
+            especialidadInput.focus();
+        }
+
+        // Evento para el botón "Nuevo"
+        btnNuevo.addEventListener("click", habilitarParaNuevo);
+
+        // Evento para seleccionar una fila de la tabla
+        filas.forEach(fila => {
+            fila.addEventListener("click", function () {
+                filas.forEach(f => f.classList.remove("table-active"));
+                this.classList.add("table-active");
+
+                const codigo = this.dataset.codigo;
+                const especialidad = this.dataset.especialidad;
+                const descripcion = this.dataset.descripcion;
+
+                codigoInput.value = codigo;
+                especialidadInput.value = especialidad;
+                descripcionTextarea.value = descripcion;
+                codigoDisplay.textContent = codigo; // Muestra el código seleccionado
+
+                especialidadInput.disabled = true;
+                descripcionTextarea.disabled = true;
+
+                btnEditar.disabled = false;
+                btnEliminar.disabled = false;
+                btnGuardar.disabled = true;
+            });
+        });
+
+        // Evento para el botón "Editar"
+        btnEditar.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (codigoInput.value) {
+                especialidadInput.disabled = false;
+                descripcionTextarea.disabled = false;
+                btnGuardar.disabled = false;
+                btnEditar.disabled = true;
+                btnEliminar.disabled = true;
+                especialidadInput.focus();
+            } else {
+                alert("Por favor, seleccione un registro de la tabla para editar.");
+            }
+        });
+
+        // Evento para el botón "Eliminar"
+        btnEliminar.addEventListener("click", function () {
+            if (codigoInput.value) {
+                const confirmacion = confirm("¿Está seguro de que desea eliminar este registro?");
+                if (confirmacion) {
+                    document.getElementById("codigoEliminar").value = codigoInput.value;
+                    formEliminar.submit();
+                }
+            } else {
+                alert("Por favor, seleccione un registro para eliminar.");
+            }
+        });
+
+        // Lógica del buscador
+        buscadorInput.addEventListener("keyup", function () {
+            const searchText = this.value.toLowerCase().trim();
+
+            filas.forEach(fila => {
+                const especialidad = fila.dataset.especialidad.toLowerCase();
+                const descripcion = fila.dataset.descripcion.toLowerCase();
+
+                if (especialidad.includes(searchText) || descripcion.includes(searchText)) {
+                    fila.style.display = "";
+                } else {
+                    fila.style.display = "none";
+                }
+            });
+        });
+    });
+</script>
