@@ -1,4 +1,4 @@
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+﻿.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
@@ -22,7 +22,7 @@ body {
     }
 }
 
-/* Para celulares (pantallas peque�as) */
+/* Para celulares (pantallas pequeñas) */
 @media (max-width: 576px) {
     html {
         font-size: 14px;
@@ -36,26 +36,74 @@ body {
     }
 }
 
-/* Para celulares (pantallas peque�as) */
+/* Para celulares (pantallas pequeñas) */
 @media (max-width: 576px) {
     body {
         font-size: 12px;
     }
 }
-
-@media (min-width: 576px) {
-    .ms-sm-240 {
-        margin-left: 240px;
-    }
+/* Sidebar colapsado (escritorio) */
+#sidebar.collapsed {
+    width: 85px !important;
 }
 
-@media (max-width: 575.98px) {
+#sidebar.collapsed .label {
+    display: none;
+}
+
+/* Hover en enlaces */
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Sidebar responsive en móviles */
+@media (max-width: 1024px) {
     #sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 240px;
+        z-index: 1050;
         transform: translateX(-100%);
-        transition: transform 0.3s ease-in-out;
+        transition: transform 0.3s ease;
+        background-color: #212529; /* fondo oscuro para que sea visible */
     }
 
-        #sidebar.show {
-            transform: translateX(0%);
-        }
+    #sidebar.show {
+        transform: translateX(0);
+    }
+
+    #overlay {
+        z-index: 1040;
+    }
+
+    /* Botón hamburguesa visible en móviles */
+    #toggleSidebar {
+        display: block;
+        z-index: 1060; /* Encima de todo */
+    }
 }
+
+@media (min-width: 1024px) {
+    /* Sidebar siempre visible y estático en escritorio */
+    #sidebar {
+        position: relative;
+        transform: translateX(0) !important;
+        width: 270px;
+        z-index: auto;
+        background-color: #212529; /* mantén el fondo oscuro */
+    }
+
+    /* Botón hamburguesa oculto en escritorio */
+    #toggleSidebar {
+        display: none;
+    }
+
+
+    /* Overlay oculto en escritorio */
+    #overlay {
+        display: none !important;
+    }
+}
+
+
