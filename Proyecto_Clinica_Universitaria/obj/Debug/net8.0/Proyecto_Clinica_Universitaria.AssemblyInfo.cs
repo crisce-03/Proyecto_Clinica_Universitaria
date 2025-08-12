@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Proyecto_Clinica_Universitaria")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+81f1aa364a62db93db8975fbd016833a973f52ef")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+56435ef995017ffb1abeab28e99f2ffeed6c016a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Proyecto_Clinica_Universitaria")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Proyecto_Clinica_Universitaria")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

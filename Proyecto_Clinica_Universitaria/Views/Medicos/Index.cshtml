@@ -1,97 +1,91 @@
 ﻿@{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Médicos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section Styles {
-    <link href="~/css/medicosStyles.css" rel="stylesheet" />
-}
+@using System.Linq
+@using Proyecto_Clinica_Universitaria.Models
+@model Proyecto_Clinica_Universitaria.Models.MedicoModel
 
+@if (TempData["Mensaje"] != null)
+{
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        @TempData["Mensaje"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
 
 <main class="p-3">
 
-    <!-- Botones Imprimir y Excel -->
-    <div class="d-flex justify-content-center gap-2 flex-wrap w-50 ms-auto">
-        <button class="btn btn-dark d-flex align-items-center justify-content-center gap-2 px-3 flex-grow-1" style="min-width: 140px;">
-            <i class="bi bi-printer"></i>
-            <span class="d-none d-md-inline">IMPRIMIR</span>
-        </button>
-        <button class="btn btn-dark d-flex align-items-center justify-content-center gap-2 px-3 flex-grow-1" style="min-width: 140px;">
-            <i class="bi bi-file-earmark-excel"></i>
-            <span class="d-none d-md-inline">EXCEL</span>
-        </button>
-    </div>
-
-
-    <!-- Formulario Médico -->
+    <!-- Formulario -->
     <section class="bg-white p-3 rounded mb-3">
+        <h4 class="mb-3">Datos del Médico</h4>
 
-        <h5 class="mb-4">Datos del Médico</h5>
-
-        <form>
-            <div class="row mb-3">
+        <form asp-action="GuardarOEditar" asp-controller="Medicos" method="post" id="frmMedico">
+            <div class="row g-3">
                 <div class="col-md-3">
                     <label class="form-label">Código</label>
-                    <input type="text" class="form-control">
+                    <input asp-for="Codigo" class="form-control" readonly value="@(Model?.Codigo ?? 0)" />
                 </div>
                 <div class="col-md-3">
                     <label class="form-label">Cédula</label>
-                    <input type="text" class="form-control">
+                    <input asp-for="Cedula" class="form-control" />
                 </div>
                 <div class="col-md-3">
                     <label class="form-label">Nombre</label>
-                    <input type="text" class="form-control">
+                    <input asp-for="Nombre" class="form-control" />
                 </div>
                 <div class="col-md-3">
                     <label class="form-label">Apellido</label>
-                    <input type="text" class="form-control">
+                    <input asp-for="Apellido" class="form-control" />
                 </div>
-            </div>
 
-            <div class="row mb-3">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <label class="form-label">Especialidad</label>
-                    <select class="form-select">
-                        <option>Seleccione...</option>
+                    <select asp-for="EspecialidadCodigo"
+                            asp-items="@(new Microsoft.AspNetCore.Mvc.Rendering.SelectList(
+                                                            ViewBag.ListaEspecialidades as List<MedicosEspecialidadModel>,
+                                                            nameof(MedicosEspecialidadModel.Codigo),
+                                                            nameof(MedicosEspecialidadModel.Especialidad),
+                                                            Model?.EspecialidadCodigo))"
+                            class="form-select">
+                        <option value="">Seleccione...</option>
                     </select>
                 </div>
-                <div class="col-md-4">
-                    <label class="form-label">Teléfono</label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-md-4">
-                    <label class="form-label">Correo</label>
-                    <input type="email" class="form-control">
-                </div>
-            </div>
-
-            <div class="row mb-3">
                 <div class="col-md-3">
-                    <label class="form-label">Acceso</label>
-                    <select class="form-select">
-                        <option>Seleccione...</option>
-                    </select>
+                    <label class="form-label">Teléfono</label>
+                    <input asp-for="Telefono" class="form-control" />
                 </div>
+                <div class="col-md-3">
+                    <label class="form-label">Correo</label>
+                    <input asp-for="Correo" class="form-control" />
+                </div>
+
                 <div class="col-md-3">
                     <label class="form-label">Usuario</label>
-                    <input type="text" class="form-control">
+                    <input asp-for="Usuario" class="form-control" />
                 </div>
                 <div class="col-md-3">
                     <label class="form-label">Password</label>
-                    <input type="password" class="form-control">
+                    <input asp-for="Contrasena" type="password" class="form-control" />
                 </div>
                 <div class="col-md-3">
                     <label class="form-label">Estado</label>
-                    <select class="form-select">
-                        <option>Activo</option>
-                        <option>Pasivo</option>
+                    <select asp-for="Estado" class="form-select">
+                        <option value="Activo">Activo</option>
+                        <option value="Pasivo">Pasivo</option>
                     </select>
                 </div>
             </div>
         </form>
 
+        <!-- Form oculto para eliminar -->
+        <form asp-action="Eliminar" asp-controller="Medicos" method="post" id="frmEliminar" class="d-none">
+            <input type="hidden" name="codigo" id="hdnEliminarCodigo" />
+        </form>
     </section>
 
+<<<<<<< Updated upstream
 
 
     <!-- Tabla de Médicos -->
@@ -113,6 +107,13 @@
         <div class="table-responsive">
             <table class="table table-striped table-hover">
                 <thead class="table-dark">
+=======
+    <!-- Tabla -->
+    <section class="bg-white p-3 rounded">
+        <div class="table-responsive" style="max-height:70vh; overflow-y:auto;">
+            <table class="table table-hover align-middle" id="tblMedicos">
+                <thead class="table-light" style="position: sticky; top: 0; z-index: 1;">
+>>>>>>> Stashed changes
                     <tr>
                         <th>Cédula</th>
                         <th>Nombre</th>
@@ -120,49 +121,212 @@
                         <th>Especialidad</th>
                         <th>Teléfono</th>
                         <th>Estado</th>
+                        <th style="width: 120px;"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td data-label="Cédula">0982876765</td>
-                        <td data-label="Nombre">Jorge Aníbal</td>
-                        <td data-label="Apellido">Gurumendi Campos</td>
-                        <td data-label="Especialidad">Medicina General</td>
-                        <td data-label="Teléfono">0987876766</td>
-                        <td data-label="Estado">Activo</td>
-                    </tr>
-                    <tr>
-                        <td data-label="Cédula">0605377027</td>
-                        <td data-label="Nombre">Angel Aníbal</td>
-                        <td data-label="Apellido">Magallanes Torres</td>
-                        <td data-label="Especialidad">Medicina General</td>
-                        <td data-label="Teléfono">0992339495</td>
-                        <td data-label="Estado">Pasivo</td>
-                    </tr>
+                    @{
+                                        var lista = ViewBag.ListaMedicos as List<MedicoModel>;
+                                        var esps  = ViewBag.ListaEspecialidades as List<MedicosEspecialidadModel>;
+                                        }
+                    @if (lista != null && lista.Count > 0)
+                    {
+                        foreach (var item in lista)
+                        {
+                            var nomEsp = esps?.FirstOrDefault(x => x.Codigo == item.EspecialidadCodigo)?.Especialidad ?? "";
+                            <tr class="row-medico"
+                                data-codigo="@item.Codigo"
+                                data-cedula="@item.Cedula"
+                                data-nombre="@item.Nombre"
+                                data-apellido="@item.Apellido"
+                                data-especialidad="@item.EspecialidadCodigo"
+                                data-telefono="@(item.Telefono ?? "")"
+                                data-correo="@(item.Correo ?? "")"
+                                data-usuario="@(item.Usuario ?? "")"
+                                data-contrasena="@(item.Contrasena ?? "")"
+                                data-estado="@item.Estado">
+                                <td>@item.Cedula</td>
+                                <td>@item.Nombre</td>
+                                <td>@item.Apellido</td>
+                                <td>@nomEsp</td>
+                                <td>@item.Telefono</td>
+                                <td>@item.Estado</td>
+                                <td class="text-end"></td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr><td colspan="7" class="text-center text-muted">Sin registros para mostrar.</td></tr>
+                    }
                 </tbody>
             </table>
         </div>
-
+        <small class="text-muted">Tip: haz clic en una fila para cargarla y luego usa los botones de abajo.</small>
     </section>
 
-    <!-- Botones de Acción -->
+    <!-- BARRA ESTÉTICA (ABAJO) -->
     <section class="d-flex flex-wrap justify-content-center gap-3 mt-4 p-3 bg-white rounded">
-        <button class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;">
+        <button type="button" id="btnNuevo"
+                class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill"
+                style="background-color:#880C09;">
             <i class="bi bi-plus-circle"></i>
             <span class="d-none d-md-inline">Nuevo</span>
         </button>
-        <button class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;">
-            <i class="bi bi-pen"></i>
+
+        <button type="button" id="btnEditar"
+                class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill"
+                style="background-color:#880C09;" disabled>
+            <i class="bi bi-pencil"></i>
             <span class="d-none d-md-inline">Editar</span>
         </button>
-        <button class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;">
-            <i class="bi bi-file-earmark-excel-fill"></i>
+
+        <button type="button" id="btnEliminar"
+                class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill"
+                style="background-color:#880C09;" disabled>
+            <i class="bi bi-trash"></i>
             <span class="d-none d-md-inline">Eliminar</span>
         </button>
-        <button type="submit" class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;">
+
+        <button type="submit" id="btnGuardar" form="frmMedico"
+                class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill"
+                style="background-color:#880C09;" disabled>
             <i class="bi bi-save"></i>
             <span class="d-none d-md-inline">Guardar</span>
         </button>
     </section>
 
 </main>
+
+<!-- MODAL Confirmar Eliminación -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmar eliminación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <p id="confirmDeleteText" class="mb-0">¿Eliminar médico?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Cancelar
+                </button>
+                <button type="button" id="btnConfirmarEliminar"
+                        class="btn text-white" style="background-color:#880C09;">
+                    <i class="bi bi-trash"></i> Aceptar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (() => {
+        const $ = (sel) => document.querySelector(sel);
+        const setVal = (id, val) => { const el = document.getElementById(id); if (el) el.value = val ?? ""; };
+        const setDisabled = (el, v) => { if (el) el.disabled = !!v; };
+
+        let selectedRow = null;
+        let selectedId = 0;
+
+        const btnNuevo = $("#btnNuevo");
+        const btnEditar = $("#btnEditar");
+        const btnEliminar = $("#btnEliminar");
+        const btnGuardar = $("#btnGuardar");
+        const btnConfirmarEliminar = $("#btnConfirmarEliminar");
+        const confirmText = $("#confirmDeleteText");
+        const modalEl = document.getElementById('confirmDeleteModal');
+        let bsModal = null;
+
+        const resetButtons = () => {
+            setDisabled(btnEditar, true);
+            setDisabled(btnEliminar, true);
+            setDisabled(btnGuardar, true);
+        };
+
+        const enableForSelection = () => {
+            setDisabled(btnEditar, false);
+            setDisabled(btnEliminar, false);
+            setDisabled(btnGuardar, false);
+        };
+
+        resetButtons(); // estado inicial
+
+        // Selección de fila + carga al formulario
+        document.querySelectorAll("#tblMedicos tbody tr.row-medico").forEach(tr => {
+            tr.addEventListener("click", () => {
+                if (selectedRow) selectedRow.classList.remove("table-active");
+                tr.classList.add("table-active");
+                selectedRow = tr;
+                selectedId = parseInt(tr.dataset.codigo || "0");
+
+                setVal("Codigo", tr.dataset.codigo);
+                setVal("Cedula", tr.dataset.cedula);
+                setVal("Nombre", tr.dataset.nombre);
+                setVal("Apellido", tr.dataset.apellido);
+                setVal("EspecialidadCodigo", tr.dataset.especialidad);
+                setVal("Telefono", tr.dataset.telefono);
+                setVal("Correo", tr.dataset.correo);
+                setVal("Usuario", tr.dataset.usuario);
+                setVal("Contrasena", tr.dataset.contrasena);
+                setVal("Estado", tr.dataset.estado);
+
+                enableForSelection();
+            });
+        });
+
+        // Nuevo
+        btnNuevo?.addEventListener("click", () => {
+            $("#frmMedico")?.reset();
+            setVal("Codigo", 0);
+            if (selectedRow) selectedRow.classList.remove("table-active");
+            selectedRow = null;
+            selectedId = 0;
+            setDisabled(btnEditar, true);
+            setDisabled(btnEliminar, true);
+            setDisabled(btnGuardar, false);
+            document.getElementById("Cedula")?.focus();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Editar
+        btnEditar?.addEventListener("click", () => {
+            if (!selectedId) { alert("Selecciona un médico de la tabla."); return; }
+            document.getElementById("Nombre")?.focus();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Eliminar -> abrir modal
+        btnEliminar?.addEventListener("click", () => {
+            if (!selectedId) { alert("Selecciona un médico de la tabla."); return; }
+            document.getElementById("hdnEliminarCodigo").value = selectedId;
+
+            // Mensaje dinámico
+            const texto = `¿Eliminar al médico ${selectedRow?.dataset?.nombre ?? ''} ${selectedRow?.dataset?.apellido ?? ''} (Cédula: ${selectedRow?.dataset?.cedula ?? ''})?`;
+            if (confirmText) confirmText.textContent = texto;
+
+            if (window.bootstrap && bootstrap.Modal) {
+                bsModal = new bootstrap.Modal(modalEl);
+                bsModal.show();
+            } else {
+                // Fallback por si no está cargado Bootstrap JS
+                if (confirm(texto)) document.getElementById("frmEliminar").submit();
+            }
+        });
+
+        // Confirmar eliminación
+        btnConfirmarEliminar?.addEventListener("click", () => {
+            document.getElementById("frmEliminar").submit();
+        });
+
+        // Cambios en form -> habilitar Guardar
+        document.querySelectorAll("#frmMedico input, #frmMedico select").forEach(el => {
+            el.addEventListener("input", () => setDisabled(btnGuardar, false));
+            el.addEventListener("change", () => setDisabled(btnGuardar, false));
+        });
+    })();
+</script>
+
+

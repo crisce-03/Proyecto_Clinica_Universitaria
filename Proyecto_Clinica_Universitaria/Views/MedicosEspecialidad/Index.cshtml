@@ -57,7 +57,10 @@
                                 {
                                     @foreach (var item in ViewBag.ListaEspecialidades as List<Proyecto_Clinica_Universitaria.Models.MedicosEspecialidadModel>)
                                     {
-                                        <tr class="fila-especialidad" data-codigo="@item.Codigo" data-especialidad="@item.Especialidad" data-descripcion="@item.Descripcion">
+                                        <tr class="fila-especialidad"
+                                            data-codigo="@item.Codigo"
+                                            data-especialidad="@item.Especialidad"
+                                            data-descripcion="@item.Descripcion">
                                             <td>@item.Especialidad</td>
                                             <td>@item.Descripcion</td>
                                         </tr>
@@ -84,11 +87,9 @@
                 </div>
             </div>
 
-
             <!-- Botones de acción -->
             <section class="d-flex flex-wrap justify-content-center gap-3 mt-4 p-3 bg-white rounded">
-                        <button type="button" id="btnNuevo" class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;">
-
+                <button type="button" id="btnNuevo" class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;">
                     <i class="bi bi-plus-circle"></i>
                     <span class="d-none d-md-inline">Nuevo</span>
                 </button>
@@ -116,13 +117,26 @@
     <input type="hidden" name="codigo" id="codigoEliminar" />
 </form>
 
-
-
-
-
-
-
-
+<!-- MODAL Confirmar Eliminación -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmar eliminación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <p id="confirmDeleteText" class="mb-0">¿Eliminar registro?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" id="btnConfirmarEliminar" class="btn text-white" style="background-color:#880C09;">
+                    <i class="bi bi-trash"></i> Aceptar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -138,6 +152,15 @@
         const formEliminar = document.getElementById("formEliminar");
         const codigoDisplay = document.getElementById("codigoDisplay");
 
+        // Modal Bootstrap
+        const modalEl = document.getElementById('confirmDeleteModal');
+        const btnConfirmarEliminar = document.getElementById('btnConfirmarEliminar');
+        const confirmText = document.getElementById('confirmDeleteText');
+
+        function getBsModal() {
+            return (window.bootstrap && bootstrap.Modal) ? new bootstrap.Modal(modalEl) : null;
+        }
+
         function resetForm() {
             codigoInput.value = '';
             especialidadInput.value = '';
@@ -148,7 +171,7 @@
             btnEditar.disabled = true;
             btnEliminar.disabled = true;
             filas.forEach(fila => fila.classList.remove("table-active"));
-            codigoDisplay.textContent = ""; // Limpia el display del código
+            codigoDisplay.textContent = "";
         }
 
         function habilitarParaNuevo() {
@@ -159,10 +182,10 @@
             especialidadInput.focus();
         }
 
-        // Evento para el botón "Nuevo"
+        // Botón "Nuevo"
         btnNuevo.addEventListener("click", habilitarParaNuevo);
 
-        // Evento para seleccionar una fila de la tabla
+        // Selección de fila
         filas.forEach(fila => {
             fila.addEventListener("click", function () {
                 filas.forEach(f => f.classList.remove("table-active"));
@@ -175,7 +198,7 @@
                 codigoInput.value = codigo;
                 especialidadInput.value = especialidad;
                 descripcionTextarea.value = descripcion;
-                codigoDisplay.textContent = codigo; // Muestra el código seleccionado
+                codigoDisplay.textContent = codigo;
 
                 especialidadInput.disabled = true;
                 descripcionTextarea.disabled = true;
@@ -186,7 +209,7 @@
             });
         });
 
-        // Evento para el botón "Editar"
+        // Botón "Editar"
         btnEditar.addEventListener("click", function (e) {
             e.preventDefault();
             if (codigoInput.value) {
@@ -201,32 +224,40 @@
             }
         });
 
-        // Evento para el botón "Eliminar"
+        // Botón "Eliminar" -> abrir modal
         btnEliminar.addEventListener("click", function () {
-            if (codigoInput.value) {
-                const confirmacion = confirm("¿Está seguro de que desea eliminar este registro?");
-                if (confirmacion) {
-                    document.getElementById("codigoEliminar").value = codigoInput.value;
-                    formEliminar.submit();
-                }
-            } else {
+            if (!codigoInput.value) {
                 alert("Por favor, seleccione un registro para eliminar.");
+                return;
+            }
+            // SET hidden field
+            document.getElementById("codigoEliminar").value = codigoInput.value;
+
+            // Texto amigable
+            if (confirmText) {
+                confirmText.textContent = `¿Eliminar la especialidad "${especialidadInput.value}" (Código: ${codigoInput.value})?`;
+            }
+
+            const modal = getBsModal();
+            if (modal) modal.show();
+            else {
+                // Fallback si no está el JS de Bootstrap
+                if (confirm(confirmText.textContent)) formEliminar.submit();
             }
         });
 
-        // Lógica del buscador
+        // Confirmar eliminación en el modal
+        btnConfirmarEliminar.addEventListener("click", function () {
+            formEliminar.submit();
+        });
+
+        // Buscador
         buscadorInput.addEventListener("keyup", function () {
             const searchText = this.value.toLowerCase().trim();
-
             filas.forEach(fila => {
-                const especialidad = fila.dataset.especialidad.toLowerCase();
-                const descripcion = fila.dataset.descripcion.toLowerCase();
-
-                if (especialidad.includes(searchText) || descripcion.includes(searchText)) {
-                    fila.style.display = "";
-                } else {
-                    fila.style.display = "none";
-                }
+                const e = fila.dataset.especialidad.toLowerCase();
+                const d = fila.dataset.descripcion.toLowerCase();
+                fila.style.display = (e.includes(searchText) || d.includes(searchText)) ? "" : "none";
             });
         });
     });
