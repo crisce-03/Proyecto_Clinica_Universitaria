@@ -57,7 +57,7 @@ body {
 }
 
 /* Sidebar responsive en móviles */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
     #sidebar {
         position: fixed;
         top: 0;
@@ -84,7 +84,7 @@ body {
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
     /* Sidebar siempre visible y estático en escritorio */
     #sidebar {
         position: relative;

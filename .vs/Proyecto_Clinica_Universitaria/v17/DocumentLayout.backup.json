@@ -1,25 +1,85 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Usuario\\source\\repos\\Proyecto_Clinica_Universitaria\\",
+  "WorkspaceRootPath": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|c:\\users\\usuario\\source\\repos\\proyecto_clinica_universitaria\\proyecto_clinica_universitaria\\views\\medicosespecialidad\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|c:\\users\\asus\\source\\repos\\proyecto_clinica_universitaria\\proyecto_clinica_universitaria\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|solutionrelative:proyecto_clinica_universitaria\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|c:\\users\\asus\\source\\repos\\proyecto_clinica_universitaria\\proyecto_clinica_universitaria\\wwwroot\\css\\medicosstyles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|solutionrelative:proyecto_clinica_universitaria\\wwwroot\\css\\medicosstyles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|c:\\users\\asus\\source\\repos\\proyecto_clinica_universitaria\\proyecto_clinica_universitaria\\wwwroot\\css\\home.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|solutionrelative:proyecto_clinica_universitaria\\wwwroot\\css\\home.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|c:\\users\\asus\\source\\repos\\proyecto_clinica_universitaria\\proyecto_clinica_universitaria\\wwwroot\\css\\historialconsultasstyle.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|solutionrelative:proyecto_clinica_universitaria\\wwwroot\\css\\historialconsultasstyle.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|c:\\users\\asus\\source\\repos\\proyecto_clinica_universitaria\\proyecto_clinica_universitaria\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|solutionrelative:proyecto_clinica_universitaria\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|c:\\users\\asus\\source\\repos\\proyecto_clinica_universitaria\\proyecto_clinica_universitaria\\views\\paciente\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|solutionrelative:proyecto_clinica_universitaria\\views\\paciente\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|c:\\users\\asus\\source\\repos\\proyecto_clinica_universitaria\\proyecto_clinica_universitaria\\views\\medicos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|solutionrelative:proyecto_clinica_universitaria\\views\\medicos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|c:\\users\\asus\\source\\repos\\proyecto_clinica_universitaria\\proyecto_clinica_universitaria\\controllers\\pacientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|solutionrelative:proyecto_clinica_universitaria\\controllers\\pacientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|c:\\users\\asus\\source\\repos\\proyecto_clinica_universitaria\\proyecto_clinica_universitaria\\views\\medicamentos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|solutionrelative:proyecto_clinica_universitaria\\views\\medicamentos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|c:\\users\\asus\\source\\repos\\proyecto_clinica_universitaria\\proyecto_clinica_universitaria\\views\\medicosespecialidad\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|solutionrelative:proyecto_clinica_universitaria\\views\\medicosespecialidad\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|c:\\users\\usuario\\source\\repos\\proyecto_clinica_universitaria\\proyecto_clinica_universitaria\\datos\\medicosespecialidaddatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|c:\\users\\asus\\source\\repos\\proyecto_clinica_universitaria\\proyecto_clinica_universitaria\\controllers\\medicamentoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|solutionrelative:proyecto_clinica_universitaria\\controllers\\medicamentoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|c:\\users\\asus\\source\\repos\\proyecto_clinica_universitaria\\proyecto_clinica_universitaria\\controllers\\historialconsultascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|solutionrelative:proyecto_clinica_universitaria\\controllers\\historialconsultascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|c:\\users\\asus\\source\\repos\\proyecto_clinica_universitaria\\proyecto_clinica_universitaria\\controllers\\consultascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|solutionrelative:proyecto_clinica_universitaria\\controllers\\consultascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|c:\\users\\asus\\source\\repos\\proyecto_clinica_universitaria\\proyecto_clinica_universitaria\\datos\\conexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|solutionrelative:proyecto_clinica_universitaria\\datos\\conexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|c:\\users\\asus\\source\\repos\\proyecto_clinica_universitaria\\proyecto_clinica_universitaria\\datos\\medicosespecialidaddatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|solutionrelative:proyecto_clinica_universitaria\\datos\\medicosespecialidaddatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\9.0.301\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|c:\\users\\usuario\\source\\repos\\proyecto_clinica_universitaria\\proyecto_clinica_universitaria\\models\\medicosespecialidadmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|c:\\users\\asus\\source\\repos\\proyecto_clinica_universitaria\\proyecto_clinica_universitaria\\models\\medicosespecialidadmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|solutionrelative:proyecto_clinica_universitaria\\models\\medicosespecialidadmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|c:\\users\\usuario\\source\\repos\\proyecto_clinica_universitaria\\proyecto_clinica_universitaria\\controllers\\medicosespecialidadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|c:\\users\\asus\\source\\repos\\proyecto_clinica_universitaria\\proyecto_clinica_universitaria\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|solutionrelative:proyecto_clinica_universitaria\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|c:\\users\\asus\\source\\repos\\proyecto_clinica_universitaria\\proyecto_clinica_universitaria\\controllers\\medicosespecialidadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|solutionrelative:proyecto_clinica_universitaria\\controllers\\medicosespecialidadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|c:\\users\\asus\\source\\repos\\proyecto_clinica_universitaria\\proyecto_clinica_universitaria\\controllers\\medicoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B262280-6681-4938-93A5-3D9444F5FD45}|Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria.csproj|solutionrelative:proyecto_clinica_universitaria\\controllers\\medicoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\9.0.301\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -29,19 +89,205 @@
       "DocumentGroups": [
         {
           "DockedWidth": 180,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "historialConsultasStyle.css",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\wwwroot\\css\\historialConsultasStyle.css",
+              "RelativeDocumentMoniker": "Proyecto_Clinica_Universitaria\\wwwroot\\css\\historialConsultasStyle.css",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\wwwroot\\css\\historialConsultasStyle.css",
+              "RelativeToolTip": "Proyecto_Clinica_Universitaria\\wwwroot\\css\\historialConsultasStyle.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-08-12T21:04:44.461Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "medicosStyles.css",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\wwwroot\\css\\medicosStyles.css",
+              "RelativeDocumentMoniker": "Proyecto_Clinica_Universitaria\\wwwroot\\css\\medicosStyles.css",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\wwwroot\\css\\medicosStyles.css",
+              "RelativeToolTip": "Proyecto_Clinica_Universitaria\\wwwroot\\css\\medicosStyles.css",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-08-12T20:42:45.98Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "Proyecto_Clinica_Universitaria\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "Proyecto_Clinica_Universitaria\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFYAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-08-12T20:42:35.664Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "home.css",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\wwwroot\\css\\home.css",
+              "RelativeDocumentMoniker": "Proyecto_Clinica_Universitaria\\wwwroot\\css\\home.css",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\wwwroot\\css\\home.css",
+              "RelativeToolTip": "Proyecto_Clinica_Universitaria\\wwwroot\\css\\home.css",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-08-12T20:42:32.433Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Views\\Paciente\\Index.cshtml",
+              "RelativeDocumentMoniker": "Proyecto_Clinica_Universitaria\\Views\\Paciente\\Index.cshtml",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Views\\Paciente\\Index.cshtml",
+              "RelativeToolTip": "Proyecto_Clinica_Universitaria\\Views\\Paciente\\Index.cshtml",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAAFoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-12T20:29:51.187Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PacienteController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Controllers\\PacienteController.cs",
+              "RelativeDocumentMoniker": "Proyecto_Clinica_Universitaria\\Controllers\\PacienteController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Controllers\\PacienteController.cs",
+              "RelativeToolTip": "Proyecto_Clinica_Universitaria\\Controllers\\PacienteController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T20:29:39.856Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Proyecto_Clinica_Universitaria\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Proyecto_Clinica_Universitaria\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAEoAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-12T20:11:32.768Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "HistorialConsultasController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Controllers\\HistorialConsultasController.cs",
+              "RelativeDocumentMoniker": "Proyecto_Clinica_Universitaria\\Controllers\\HistorialConsultasController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Controllers\\HistorialConsultasController.cs",
+              "RelativeToolTip": "Proyecto_Clinica_Universitaria\\Controllers\\HistorialConsultasController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T20:11:19.974Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ConsultasController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Controllers\\ConsultasController.cs",
+              "RelativeDocumentMoniker": "Proyecto_Clinica_Universitaria\\Controllers\\ConsultasController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Controllers\\ConsultasController.cs",
+              "RelativeToolTip": "Proyecto_Clinica_Universitaria\\Controllers\\ConsultasController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T20:11:18.384Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Views\\Medicamentos\\Index.cshtml",
+              "RelativeDocumentMoniker": "Proyecto_Clinica_Universitaria\\Views\\Medicamentos\\Index.cshtml",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Views\\Medicamentos\\Index.cshtml",
+              "RelativeToolTip": "Proyecto_Clinica_Universitaria\\Views\\Medicamentos\\Index.cshtml",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAAAHMAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-12T20:10:08.017Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MedicamentosController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Controllers\\MedicamentosController.cs",
+              "RelativeDocumentMoniker": "Proyecto_Clinica_Universitaria\\Controllers\\MedicamentosController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Controllers\\MedicamentosController.cs",
+              "RelativeToolTip": "Proyecto_Clinica_Universitaria\\Controllers\\MedicamentosController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T20:09:57.361Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\appsettings.json",
+              "RelativeDocumentMoniker": "Proyecto_Clinica_Universitaria\\appsettings.json",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\appsettings.json",
+              "RelativeToolTip": "Proyecto_Clinica_Universitaria\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-07T22:51:56.674Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Conexion.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Datos\\Conexion.cs",
+              "RelativeDocumentMoniker": "Proyecto_Clinica_Universitaria\\Datos\\Conexion.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Datos\\Conexion.cs",
+              "RelativeToolTip": "Proyecto_Clinica_Universitaria\\Datos\\Conexion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T22:51:35.215Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "MedicosController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Controllers\\MedicosController.cs",
+              "RelativeDocumentMoniker": "Proyecto_Clinica_Universitaria\\Controllers\\MedicosController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Controllers\\MedicosController.cs",
+              "RelativeToolTip": "Proyecto_Clinica_Universitaria\\Controllers\\MedicosController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T22:51:14.092Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Views\\Medicos\\Index.cshtml",
+              "RelativeDocumentMoniker": "Proyecto_Clinica_Universitaria\\Views\\Medicos\\Index.cshtml",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Views\\Medicos\\Index.cshtml",
+              "RelativeToolTip": "Proyecto_Clinica_Universitaria\\Views\\Medicos\\Index.cshtml",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAAAG4AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-07T22:50:17.529Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
               "Title": "Microsoft.NET.Sdk.StaticWebAssets.targets",
               "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\9.0.301\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.targets",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.301\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.targets",
@@ -49,16 +295,15 @@
               "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.301\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.targets",
               "ViewState": "AgIAAJACAAAAAAAAAAAMwKsCAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2025-08-07T22:29:52.791Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-07T22:29:52.791Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 14,
               "Title": "MedicosEspecialidadDatos.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Datos\\MedicosEspecialidadDatos.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Datos\\MedicosEspecialidadDatos.cs",
               "RelativeDocumentMoniker": "Proyecto_Clinica_Universitaria\\Datos\\MedicosEspecialidadDatos.cs",
-              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Datos\\MedicosEspecialidadDatos.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Datos\\MedicosEspecialidadDatos.cs",
               "RelativeToolTip": "Proyecto_Clinica_Universitaria\\Datos\\MedicosEspecialidadDatos.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -67,40 +312,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 17,
               "Title": "MedicosEspecialidadController.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Controllers\\MedicosEspecialidadController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Controllers\\MedicosEspecialidadController.cs",
               "RelativeDocumentMoniker": "Proyecto_Clinica_Universitaria\\Controllers\\MedicosEspecialidadController.cs",
-              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Controllers\\MedicosEspecialidadController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Controllers\\MedicosEspecialidadController.cs",
               "RelativeToolTip": "Proyecto_Clinica_Universitaria\\Controllers\\MedicosEspecialidadController.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-23T04:39:25.799Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 9,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Views\\MedicosEspecialidad\\Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Views\\MedicosEspecialidad\\Index.cshtml",
               "RelativeDocumentMoniker": "Proyecto_Clinica_Universitaria\\Views\\MedicosEspecialidad\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Views\\MedicosEspecialidad\\Index.cshtml*",
-              "RelativeToolTip": "Proyecto_Clinica_Universitaria\\Views\\MedicosEspecialidad\\Index.cshtml*",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAAAFcAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Views\\MedicosEspecialidad\\Index.cshtml",
+              "RelativeToolTip": "Proyecto_Clinica_Universitaria\\Views\\MedicosEspecialidad\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-07-23T04:39:06.333Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 15,
               "Title": "MedicosEspecialidadModel.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Models\\MedicosEspecialidadModel.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Models\\MedicosEspecialidadModel.cs",
               "RelativeDocumentMoniker": "Proyecto_Clinica_Universitaria\\Models\\MedicosEspecialidadModel.cs",
-              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Models\\MedicosEspecialidadModel.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Proyecto_Clinica_Universitaria\\Proyecto_Clinica_Universitaria\\Models\\MedicosEspecialidadModel.cs",
               "RelativeToolTip": "Proyecto_Clinica_Universitaria\\Models\\MedicosEspecialidadModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-23T04:38:51.299Z"
+              "WhenOpened": "2025-07-23T04:38:51.299Z",
+              "EditorCaption": ""
             }
           ]
         }
