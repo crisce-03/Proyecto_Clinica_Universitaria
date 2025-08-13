@@ -192,5 +192,31 @@ namespace Proyecto_Clinica_Universitaria.Datos
 
             return result;
         }
+
+        public List<MedicoModel> ListarNombres()
+        {
+            var lista = new List<MedicoModel>();
+            var cn = new Conexion();
+
+            using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SELECT Codigo, Nombre FROM Medicos", conexion);
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        lista.Add(new MedicoModel
+                        {
+                            Codigo = dr.GetInt32(0),
+                            Nombre = dr.GetString(1)
+                        });
+                    }
+                }
+            }
+
+            return lista;
+        }
     }
 }
