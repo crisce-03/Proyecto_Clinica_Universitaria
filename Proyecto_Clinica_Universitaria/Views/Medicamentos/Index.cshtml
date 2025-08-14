@@ -1,117 +1,326 @@
 ﻿@{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Medicamentos";
     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Proyecto_Clinica_Universitaria.Models
+@model Proyecto_Clinica_Universitaria.Models.MedicamentoModel
+
+@if (TempData["Mensaje"] != null)
+{
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        @TempData["Mensaje"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 }
 
 <div class="bg-white p-4 mt-5 rounded">
 
-    <!-- BARRA DE BÚSQUEDA -->
+    <!-- BÚSQUEDA -->
     <div class="mb-4">
         <div class="input-group contenedorBusqueda">
             <span class="input-group-text"><i class="bi bi-search"></i></span>
-            <input type="text" class="form-control" placeholder="Buscar medicamento..." />
+            <input type="text" id="txtBuscar" class="form-control" placeholder="Buscar medicamento..." />
         </div>
     </div>
 
-    <!-- CONTENEDOR PRINCIPAL -->
     <div class="row g-4">
-
-        <!-- TABLA DE MEDICAMENTOS -->
-        <div class="col-12 col-lg-8">
-            <div class="table-responsive table-container-scroll">
-                <table class="table table-striped contenedorTabla">
-                    <thead>
+        <!-- TABLA -->
+        <div class="col-12 col-lg-12">
+            <div class="table-responsive table-container-scroll" style="max-height:70vh; overflow:auto;">
+                <table class="table table-striped contenedorTabla align-middle" id="tblMed">
+                    <thead class="table-light" style="position:sticky; top:0; z-index:1;">
                         <tr>
-                            <th scope="col">Imagen</th>
-                            <th scope="col">ID</th>
-                            <th scope="col">Medicamento</th>
-                            <th scope="col">Descripción</th>
-                            <th scope="col">Cantidad</th>
-                            <th scope="col">Vencimiento</th>
+                            <th>Imagen</th>
+                            <th>ID</th>
+                            <th>Medicamento</th>
+                            <th>Descripción</th>
+                            <th>Cantidad</th>
+                            <th>Vencimiento</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Sin imagen</td>
-                            <td>1</td>
-                            <td>Lactulosa</td>
-                            <td>Alivia el dolor de cabeza</td>
-                            <td>1 / 20</td>
-                            <td>24/04/2027</td>
-                        </tr>
-                        <tr>
-                            <td>Sin imagen</td>
-                            <td>2</td>
-                            <td>Ibuprofeno</td>
-                            <td>Ayuda a la desintoxicación</td>
-                            <td>5 / 20</td>
-                            <td>14/08/2030</td>
-                        </tr>
-                        <tr>
-                            <td>Sin imagen</td>
-                            <td>3</td>
-                            <td>Metoclopramida</td>
-                            <td>Ayuda al dolor de estómago</td>
-                            <td>17 / 20</td>
-                            <td>05/12/2032</td>
-                        </tr>
+                        @{
+                            var lista = ViewBag.Lista as List<MedicamentoModel>;
+                        }
+                        @if (lista != null && lista.Count > 0)
+                        {
+                            foreach (var it in lista)
+                            {
+                                var fechaIso = it.Vencimiento?.ToString("yyyy-MM-dd");
+                                <tr class="row-med"
+                                    data-codigo="@it.Codigo"
+                                    data-medicamento="@it.Medicamento"
+                                    data-descripcion="@it.Descripcion"
+                                    data-cantidad="@it.Cantidad"
+                                    data-vencimiento="@fechaIso"
+                                    data-imagen="@it.Imagen">
+                                    <td class="cell-img" style="width:68px;">
+                                        <img class="thumb img-thumbnail" data-src="@it.Imagen"
+                                             alt="imagen"
+                                             style="width:56px;height:56px;object-fit:cover;" />
+                                    </td>
+                                    <td>@it.Codigo</td>
+                                    <td>@it.Medicamento</td>
+                                    <td>@it.Descripcion</td>
+                                    <td>@it.Cantidad</td>
+                                    <td>@(it.Vencimiento?.ToString("dd/MM/yyyy"))</td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr><td colspan="6" class="text-center text-muted">Sin registros.</td></tr>
+                        }
                     </tbody>
                 </table>
             </div>
         </div>
-
-        <!-- REGISTRO DE MEDICAMENTOS-->
-        <div class="col-12 col-lg-4">
-            <h4>Registrar medicamento</h4>
-
-            <form class="mt-3">
-                <div class="mb-3">
-                    <label for="medicamento" class="form-label">Medicamento:</label>
-                    <input type="text" id="medicamento" class="form-control" required />
-                </div>
-
-                <div class="mb-3">
-                    <label for="descripcion" class="form-label">Descripción:</label>
-                    <textarea id="descripcion" class="form-control" rows="2"></textarea>
-                </div>
-
-                <div class="mb-3">
-                    <label for="cantidad" class="form-label">Cantidad:</label>
-                    <input type="number" id="cantidad" class="form-control" required />
-                </div>
-
-                <div class="mb-3">
-                    <label for="vencimiento" class="form-label">Vencimiento:</label>
-                    <input type="date" id="vencimiento" class="form-control" required />
-                </div>
-
-                <div class="mb-3">
-                    <label for="imagen" class="form-label">Imagen:</label>
-                    <input type="file" id="imagen" class="form-control" required />
-                </div>
-            </form>
-        </div>
-
-
-
     </div>
 
+    <!-- BOTONES -->
     <section class="d-flex flex-wrap justify-content-center gap-3 mt-4 p-3 bg-white rounded">
-        <button class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;">
-            <i class="bi bi-plus-circle"></i>
-            <span class="d-none d-md-inline">Nuevo</span>
+        <button type="button" id="btnNuevo" class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;">
+            <i class="bi bi-plus-circle"></i><span class="d-none d-md-inline">Nuevo</span>
         </button>
-        <button class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;">
-            <i class="bi bi-pen"></i>
-            <span class="d-none d-md-inline">Editar</span>
+        <button type="button" id="btnEditar" class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;" disabled>
+            <i class="bi bi-pen"></i><span class="d-none d-md-inline">Editar</span>
         </button>
-        <button class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;">
-            <i class="bi bi-file-earmark-excel-fill"></i>
-            <span class="d-none d-md-inline">Eliminar</span>
+        <button type="button" id="btnEliminar" class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;" disabled>
+            <i class="bi bi-file-earmark-excel-fill"></i><span class="d-none d-md-inline">Eliminar</span>
         </button>
-        <button type="submit" class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;">
-            <i class="bi bi-save"></i>
-            <span class="d-none d-md-inline">Guardar</span>
+        <!-- Envia el formulario del modal -->
+        <button type="submit" id="btnGuardar" form="frmMed" class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;" disabled>
+            <i class="bi bi-save"></i><span class="d-none d-md-inline">Guardar</span>
         </button>
     </section>
 </div>
+
+<!-- Eliminar oculto -->
+<form asp-action="Eliminar" asp-controller="Medicamentos" method="post" id="frmEliminar" class="d-none">
+    <input type="hidden" name="codigo" id="hdnEliminarCodigo" />
+</form>
+
+<!-- MODAL eliminar -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered d-flex justify-content-center align-items-center">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmar eliminación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body"><p id="confirmDeleteText" class="mb-0">¿Eliminar medicamento?</p></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" id="btnConfirmarEliminar" class="btn text-white" style="background-color:#880C09;">
+                    <i class="bi bi-trash"></i> Aceptar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL: Crear/Editar Medicamento (form original aquí) -->
+<div class="modal fade" id="modalMedicamento" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable d-flex justify-content-center align-items-center">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Medicamento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <form class="mt-1" asp-action="GuardarOEditar" asp-controller="Medicamentos" method="post" id="frmMed">
+                    <div class="mb-3">
+                        <label class="form-label">Código</label>
+                        <input asp-for="Codigo" id="Codigo" class="form-control" readonly value="@(Model?.Codigo ?? 0)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Medicamento" class="form-label">Medicamento:</label>
+                        <input asp-for="Medicamento" id="Medicamento" class="form-control" maxlength="100" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Descripcion" class="form-label">Descripción:</label>
+                        <textarea asp-for="Descripcion" id="Descripcion" class="form-control" rows="2" maxlength="255"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Cantidad" class="form-label">Cantidad:</label>
+                        <input asp-for="Cantidad" id="Cantidad" type="number" class="form-control" min="0" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Vencimiento" class="form-label">Vencimiento:</label>
+                        <input asp-for="Vencimiento" id="Vencimiento" type="date" class="form-control" />
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label">Imagen (se guarda la ruta/nombre):</label>
+                        <div class="input-group">
+                            <input asp-for="Imagen" id="Imagen" class="form-control" maxlength="255" />
+                            <input type="file" id="fileImagen" accept="image/*" class="form-control" />
+                        </div>
+                        <small class="text-muted">El selector no sube el archivo, solo copia el nombre/ruta al campo.</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <img id="previewImg" src="#" alt="" class="img-thumbnail d-none" style="max-height:110px;" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" id="btnGuardarModalMedicamento" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const $ = s => document.querySelector(s);
+      const setVal = (id,v) => { const el=document.getElementById(id); if(el) el.value=(v??""); };
+      const setDis = (el,b) => { if(el) el.disabled=!!b; };
+      const hasBS = !!(window.bootstrap && bootstrap.Modal);
+
+      const PH = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='56'><rect width='100%25' height='100%25' fill='%23e9ecef'/><text x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='9' fill='%236c757d'>Sin%20imagen</text></svg>";
+
+      // thumbs
+      document.querySelectorAll('img.thumb').forEach(img=>{
+        const s = (img.dataset.src||"").trim();
+        img.src = s || PH;
+        img.onerror = () => { img.onerror=null; img.src = PH; };
+      });
+
+      let selRow=null, selId=0, selThumb=null;
+      const btnNuevo=$("#btnNuevo"), btnEditar=$("#btnEditar"), btnEliminar=$("#btnEliminar"), btnGuardarBar=$("#btnGuardar");
+      const txtBuscar=$("#txtBuscar"), txtImg=$("#Imagen"), fileImg=$("#fileImagen"), prev=$("#previewImg");
+      const modalConfirmEl=document.getElementById('confirmDeleteModal'),
+            btnConfirm=document.getElementById('btnConfirmarEliminar'),
+            confirmText=$("#confirmDeleteText");
+
+      const modalEl = document.getElementById('modalMedicamento');
+      let modalMed = null;
+      const openMed = () => {
+        if (!hasBS) { alert("Falta Bootstrap JS (bootstrap.bundle.min.js) en _Layout."); return; }
+        if (!modalMed) modalMed = new bootstrap.Modal(modalEl);
+        modalMed.show();
+      };
+
+      const resetBtns = () => { setDis(btnEditar,true); setDis(btnEliminar,true); setDis(btnGuardarBar,true); };
+      const enableAll = () => { setDis(btnEditar,false); setDis(btnEliminar,false); setDis(btnGuardarBar,false); };
+
+      function clearPreview(){ if(prev){ prev.src="#"; prev.classList.add("d-none"); } }
+      function tryShowPreviewFromText(){
+        const v = (txtImg?.value || "").trim();
+        if (!v) { clearPreview(); if(selThumb) selThumb.src = PH; return; }
+        if (prev){
+          prev.src = v; prev.onload = ()=>prev.classList.remove("d-none"); prev.onerror = ()=>clearPreview();
+        }
+        if (selThumb){
+          selThumb.src = v; selThumb.onerror = ()=>{ selThumb.onerror=null; selThumb.src = PH; };
+          selRow.dataset.imagen = v;
+        }
+      }
+
+      resetBtns();
+
+      // Filtro
+      txtBuscar?.addEventListener("input", function(){
+        const q = this.value.toLowerCase().trim();
+        document.querySelectorAll("#tblMed tbody tr").forEach(tr=>{
+          const t = (tr.innerText||"").toLowerCase();
+          tr.style.display = t.includes(q) ? "" : "none";
+        });
+      });
+
+      // File -> copiar nombre y preview
+      fileImg?.addEventListener("change", function(){
+        const f = this.files && this.files[0];
+        if (!f) return;
+        if (txtImg) txtImg.value = f.name;
+        if (prev){
+          try { prev.src = URL.createObjectURL(f); prev.classList.remove("d-none"); } catch {}
+        }
+        if (selThumb){
+          try { selThumb.src = URL.createObjectURL(f); } catch { selThumb.src = PH; }
+          selRow.dataset.imagen = f.name;
+        }
+        setDis(btnGuardarBar,false);
+      });
+
+      // Click fila -> cargar al form (del modal)
+      document.querySelectorAll("#tblMed tbody tr.row-med").forEach(tr=>{
+        tr.addEventListener("click", ()=>{
+          if (selRow) selRow.classList.remove("table-active");
+          tr.classList.add("table-active"); selRow=tr; selId = parseInt(tr.dataset.codigo||"0");
+          selThumb = tr.querySelector("img.thumb");
+
+          setVal("Codigo", tr.dataset.codigo);
+          setVal("Medicamento", tr.dataset.medicamento);
+          setVal("Descripcion", tr.dataset.descripcion);
+          setVal("Cantidad", tr.dataset.cantidad);
+          setVal("Vencimiento", tr.dataset.vencimiento);
+          setVal("Imagen", tr.dataset.imagen);
+
+          if (fileImg) fileImg.value = "";
+          clearPreview();
+          if ((tr.dataset.imagen||"").trim()) tryShowPreviewFromText();
+
+          enableAll();
+        });
+      });
+
+      // Nuevo -> limpiar y abrir modal
+      btnNuevo?.addEventListener("click", ()=>{
+        const form = document.getElementById("frmMed");
+        form?.reset();
+        setVal("Codigo", 0);
+        if (selRow) selRow.classList.remove("table-active");
+        selRow=null; selId=0; selThumb=null;
+        if (fileImg) fileImg.value = "";
+        clearPreview();
+        setDis(btnEditar,true); setDis(btnEliminar,true); setDis(btnGuardarBar,false);
+        openMed();
+        setTimeout(() => document.getElementById("Medicamento")?.focus(), 150);
+      });
+
+      // Editar -> abrir modal
+      btnEditar?.addEventListener("click", ()=>{
+        if (!selId) { alert("Selecciona un medicamento."); return; }
+        tryShowPreviewFromText();
+        openMed();
+        setTimeout(() => document.getElementById("Medicamento")?.focus(), 150);
+      });
+
+      // Guardar (desde el modal)
+      document.getElementById('btnGuardarModalMedicamento')?.addEventListener("click", () => {
+        document.getElementById("frmMed")?.submit();
+      });
+
+      // Eliminar → modal confirm
+      btnEliminar?.addEventListener("click", ()=>{
+        if (!selId) { alert("Selecciona un medicamento."); return; }
+        document.getElementById("hdnEliminarCodigo").value = selId;
+        if (confirmText) {
+          const n = selRow?.dataset?.medicamento ?? "";
+          confirmText.textContent = `¿Eliminar "${n}" (Código: ${selId})?`;
+        }
+        if (hasBS) new bootstrap.Modal(modalConfirmEl).show();
+        else if (confirm(confirmText.textContent)) document.getElementById("frmEliminar").submit();
+      });
+      btnConfirm?.addEventListener("click", ()=> document.getElementById("frmEliminar").submit());
+
+      // Campo Imagen manual -> preview
+      $("#Imagen")?.addEventListener("change", tryShowPreviewFromText);
+
+      // Habilitar Guardar ante cambios del form
+      document.addEventListener("input", (ev) => {
+        if (ev.target.closest("#frmMed")) setDis(btnGuardarBar,false);
+      });
+      document.addEventListener("change", (ev) => {
+        if (ev.target.closest("#frmMed")) setDis(btnGuardarBar,false);
+      });
+    });
+</script>
+

@@ -1,8 +1,9 @@
 ﻿@{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Especialidades Médicas";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@using Proyecto_Clinica_Universitaria.Models
 @model Proyecto_Clinica_Universitaria.Models.MedicosEspecialidadModel
 
 @if (TempData["Mensaje"] != null)
@@ -13,124 +14,113 @@
     </div>
 }
 
-<form asp-action="GuardarOEditar" asp-controller="MedicosEspecialidad" method="post" id="mainForm">
-    <section class="bg-white rounded min-vh-100 d-flex justify-content-center align-items-center w-100">
-        <div class="container-fluid text-center">
+<main class="p-3">
 
-            <div class="row g-3">
-                <div class="col-12 col-lg-9">
-                    <div class="text-start">
-                        <div class="p-3 bg-white border-bottom">
-                            <div class="row justify-content-start">
-                                <div class="col-md-6">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Buscar paciente">
-                                        <span class="input-group-text"><i class="bi bi-search"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-lg-3">
-                    <div class="shadow-lg p-3 mb-3 rounded">
-                        <div class="text-end" id="codigoDisplay"></div>
-                        <hr class="my-2">
-                        <div class="text-start">ESPECIALIDAD</div>
-                    </div>
-                </div>
+    <!-- Tabla de Especialidades -->
+    <section class="bg-white p-3 rounded mb-3">
+        <!-- Buscador + Contador -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="input-group" style="max-width: 300px;">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input type="text" class="form-control" placeholder="Buscar..." id="txtBuscarEspecialidades" />
             </div>
-
-            <div class="row mt-4 g-3">
-                <div class="col-12 col-lg-9">
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead class="table-light">
-                                <tr>
-                                    <th>ESPECIALIDAD</th>
-                                    <th>DESCRIPCIÓN</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if (ViewBag.ListaEspecialidades != null)
-                                {
-                                    @foreach (var item in ViewBag.ListaEspecialidades as List<Proyecto_Clinica_Universitaria.Models.MedicosEspecialidadModel>)
-                                    {
-                                        <tr class="fila-especialidad"
-                                            data-codigo="@item.Codigo"
-                                            data-especialidad="@item.Especialidad"
-                                            data-descripcion="@item.Descripcion">
-                                            <td>@item.Especialidad</td>
-                                            <td>@item.Descripcion</td>
-                                        </tr>
-                                    }
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div class="col-12 col-lg-3">
-                    <div class="mb-3">
-                        <label class="form-label">CÓDIGO</label>
-                        <input type="text" asp-for="Codigo" readonly class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">OCUPACIÓN</label>
-                        <input type="text" asp-for="Especialidad" class="form-control" disabled />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">DESCRIPCIÓN</label>
-                        <textarea class="form-control" asp-for="Descripcion" rows="3" disabled></textarea>
-                    </div>
-                </div>
+            <div class="text-end">
+                <span class="badge bg-warning text-dark p-2">
+                    <i class="bi bi-hospital"></i> Especialidad(es)
+                </span>
             </div>
-
-            <!-- Botones de acción -->
-            <section class="d-flex flex-wrap justify-content-center gap-3 mt-4 p-3 bg-white rounded">
-                <button type="button" id="btnNuevo" class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;">
-                    <i class="bi bi-plus-circle"></i>
-                    <span class="d-none d-md-inline">Nuevo</span>
-                </button>
-
-                <button type="button" id="btnEditar" class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;" disabled>
-                    <i class="bi bi-pencil"></i>
-                    <span class="d-none d-md-inline">Editar</span>
-                </button>
-
-                <button type="button" id="btnEliminar" class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;" disabled>
-                    <i class="bi bi-trash"></i>
-                    <span class="d-none d-md-inline">Eliminar</span>
-                </button>
-
-                <button type="submit" id="btnGuardar" class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill" style="background-color:#880C09;" disabled>
-                    <i class="bi bi-save"></i>
-                    <span class="d-none d-md-inline">Guardar</span>
-                </button>
-            </section>
         </div>
-    </section>
-</form>
 
-<form id="formEliminar" asp-action="Eliminar" asp-controller="MedicosEspecialidad" method="post">
-    <input type="hidden" name="codigo" id="codigoEliminar" />
+        <div class="table-responsive" style="max-height:70vh; overflow-y:auto;">
+            <table class="table table-hover align-middle" id="tblEspecialidades">
+                <thead class="table-light" style="position: sticky; top: 0; z-index: 1;">
+                    <tr>
+                        <th>Especialidad</th>
+                        <th>Descripción</th>
+                        <th style="width: 120px;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var lista = ViewBag.ListaEspecialidades as List<MedicosEspecialidadModel>;
+                    }
+                    @if (lista != null && lista.Count > 0)
+                    {
+                        foreach (var item in lista)
+                        {
+                            <tr class="row-esp"
+                                data-codigo="@item.Codigo"
+                                data-especialidad="@item.Especialidad"
+                                data-descripcion="@item.Descripcion">
+                                <td>@item.Especialidad</td>
+                                <td>@item.Descripcion</td>
+                                <td class="text-end"></td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr><td colspan="3" class="text-center text-muted">Sin registros para mostrar.</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <small class="text-muted">Tip: haz clic en una fila para seleccionarla y luego usa los botones.</small>
+    </section>
+
+    <!-- BARRA DE ACCIONES -->
+    <section class="d-flex flex-wrap justify-content-center gap-3 mt-4 p-3 bg-white rounded">
+        <button type="button" id="btnNuevo"
+                class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill"
+                style="background-color:#880C09;">
+            <i class="bi bi-plus-circle"></i>
+            <span class="d-none d-md-inline">Nuevo</span>
+        </button>
+
+        <button type="button" id="btnEditar"
+                class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill"
+                style="background-color:#880C09;" disabled>
+            <i class="bi bi-pencil"></i>
+            <span class="d-none d-md-inline">Editar</span>
+        </button>
+
+        <button type="button" id="btnEliminar"
+                class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill"
+                style="background-color:#880C09;" disabled>
+            <i class="bi bi-trash"></i>
+            <span class="d-none d-md-inline">Eliminar</span>
+        </button>
+
+        <!-- Este botón envía el formulario del modal -->
+        <button type="submit" id="btnGuardar" form="frmEspecialidad"
+                class="btn text-white px-3 py-2 d-flex align-items-center justify-content-center gap-2 flex-fill"
+                style="background-color:#880C09;" disabled>
+            <i class="bi bi-save"></i>
+            <span class="d-none d-md-inline">Guardar</span>
+        </button>
+    </section>
+
+</main>
+
+<!-- Form oculto para eliminar -->
+<form asp-action="Eliminar" asp-controller="MedicosEspecialidad" method="post" id="frmEliminarEsp" class="d-none">
+    <input type="hidden" name="codigo" id="hdnEliminarCodigoEsp" />
 </form>
 
 <!-- MODAL Confirmar Eliminación -->
-<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+<div class="modal fade" id="confirmDeleteModalEsp" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered d-flex justify-content-center align-items-center">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Confirmar eliminación</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">
-                <p id="confirmDeleteText" class="mb-0">¿Eliminar registro?</p>
+                <p id="confirmDeleteTextEsp" class="mb-0">¿Eliminar especialidad?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" id="btnConfirmarEliminar" class="btn text-white" style="background-color:#880C09;">
+                <button type="button" id="btnConfirmarEliminarEsp" class="btn text-white" style="background-color:#880C09;">
                     <i class="bi bi-trash"></i> Aceptar
                 </button>
             </div>
@@ -138,127 +128,158 @@
     </div>
 </div>
 
+<!-- MODAL: Crear/Editar Especialidad -->
+
+<div class="modal faden" id="modalEspecialidad" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable d-flex justify-content-center align-items-center">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Especialidad de Médico</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="GuardarOEditar" asp-controller="MedicosEspecialidad" method="post" id="frmEspecialidad">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <label class="form-label">Código</label>
+                            <input asp-for="Codigo" id="Codigo" class="form-control" readonly value="@(Model?.Codigo ?? 0)" />
+                        </div>
+                        <div class="col-md-9">
+                            <label class="form-label">Especialidad</label>
+                            <input asp-for="Especialidad" id="Especialidad" class="form-control" />
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Descripción</label>
+                            <textarea asp-for="Descripcion" id="Descripcion" class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" id="btnGuardarModalEspecialidad" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const filas = document.querySelectorAll(".fila-especialidad");
-        const codigoInput = document.querySelector("input[name='Codigo']");
-        const especialidadInput = document.querySelector("input[name='Especialidad']");
-        const descripcionTextarea = document.querySelector("textarea[name='Descripcion']");
-        const btnNuevo = document.getElementById("btnNuevo");
-        const btnEditar = document.getElementById("btnEditar");
-        const btnEliminar = document.getElementById("btnEliminar");
-        const btnGuardar = document.getElementById("btnGuardar");
-        const buscadorInput = document.querySelector("input[placeholder='Buscar paciente']");
-        const formEliminar = document.getElementById("formEliminar");
-        const codigoDisplay = document.getElementById("codigoDisplay");
+    document.addEventListener('DOMContentLoaded', function () {
+      // Helpers
+      const $ = (sel) => document.querySelector(sel);
+      const setVal = (id, val) => { const el = document.getElementById(id); if (el) el.value = val ?? ""; };
+      const setDisabled = (el, v) => { if (el) el.disabled = !!v; };
+      const hasBS = !!(window.bootstrap && bootstrap.Modal);
 
-        // Modal Bootstrap
-        const modalEl = document.getElementById('confirmDeleteModal');
-        const btnConfirmarEliminar = document.getElementById('btnConfirmarEliminar');
-        const confirmText = document.getElementById('confirmDeleteText');
+      let selectedRow = null;
+      let selectedId = 0;
 
-        function getBsModal() {
-            return (window.bootstrap && bootstrap.Modal) ? new bootstrap.Modal(modalEl) : null;
-        }
+      // Barra
+      const btnNuevo   = $("#btnNuevo");
+      const btnEditar  = $("#btnEditar");
+      const btnEliminar= $("#btnEliminar");
+      const btnGuardar = $("#btnGuardar");
 
-        function resetForm() {
-            codigoInput.value = '';
-            especialidadInput.value = '';
-            descripcionTextarea.value = '';
-            especialidadInput.disabled = true;
-            descripcionTextarea.disabled = true;
-            btnGuardar.disabled = true;
-            btnEditar.disabled = true;
-            btnEliminar.disabled = true;
-            filas.forEach(fila => fila.classList.remove("table-active"));
-            codigoDisplay.textContent = "";
-        }
+      // Buscar
+      const txtBuscar  = $("#txtBuscarEspecialidades");
 
-        function habilitarParaNuevo() {
-            resetForm();
-            especialidadInput.disabled = false;
-            descripcionTextarea.disabled = false;
-            btnGuardar.disabled = false;
-            especialidadInput.focus();
-        }
+      // Tablas/filas
+      const table = $("#tblEspecialidades");
+      const rows  = table?.querySelectorAll("tbody tr.row-esp") || [];
 
-        // Botón "Nuevo"
-        btnNuevo.addEventListener("click", habilitarParaNuevo);
+      // Modales eliminar
+      const confirmText = $("#confirmDeleteTextEsp");
+      const modalConfirmEl = $("#confirmDeleteModalEsp");
+      const btnConfirmarEliminar = $("#btnConfirmarEliminarEsp");
 
-        // Selección de fila
-        filas.forEach(fila => {
-            fila.addEventListener("click", function () {
-                filas.forEach(f => f.classList.remove("table-active"));
-                this.classList.add("table-active");
+      // Modal especialidad
+      const modalEspecialidadEl = $("#modalEspecialidad");
+      let modalEspecialidad = null;
+      const openEspModal = () => {
+        if (!hasBS) { alert("Falta Bootstrap JS (bootstrap.bundle.min.js) en _Layout."); return; }
+        if (!modalEspecialidad) modalEspecialidad = new bootstrap.Modal(modalEspecialidadEl);
+        modalEspecialidad.show();
+      };
 
-                const codigo = this.dataset.codigo;
-                const especialidad = this.dataset.especialidad;
-                const descripcion = this.dataset.descripcion;
-
-                codigoInput.value = codigo;
-                especialidadInput.value = especialidad;
-                descripcionTextarea.value = descripcion;
-                codigoDisplay.textContent = codigo;
-
-                especialidadInput.disabled = true;
-                descripcionTextarea.disabled = true;
-
-                btnEditar.disabled = false;
-                btnEliminar.disabled = false;
-                btnGuardar.disabled = true;
-            });
+      // Filtro
+      txtBuscar?.addEventListener('input', function(){
+        const q = this.value.toLowerCase().trim();
+        rows.forEach(tr => {
+          const t = (tr.innerText || "").toLowerCase();
+          tr.style.display = t.includes(q) ? "" : "none";
         });
+      });
 
-        // Botón "Editar"
-        btnEditar.addEventListener("click", function (e) {
-            e.preventDefault();
-            if (codigoInput.value) {
-                especialidadInput.disabled = false;
-                descripcionTextarea.disabled = false;
-                btnGuardar.disabled = false;
-                btnEditar.disabled = true;
-                btnEliminar.disabled = true;
-                especialidadInput.focus();
-            } else {
-                alert("Por favor, seleccione un registro de la tabla para editar.");
-            }
+      // Selección de fila
+      rows.forEach(tr => {
+        tr.addEventListener("click", () => {
+          if (selectedRow) selectedRow.classList.remove("table-active");
+          tr.classList.add("table-active");
+          selectedRow = tr;
+          selectedId = parseInt(tr.dataset.codigo || "0");
+
+          // precargar valores (como en Médicos)
+          setVal("Codigo", tr.dataset.codigo);
+          setVal("Especialidad", tr.dataset.especialidad);
+          setVal("Descripcion", tr.dataset.descripcion);
+
+          setDisabled(btnEditar, false);
+          setDisabled(btnEliminar, false);
+          setDisabled(btnGuardar, false);
         });
+      });
 
-        // Botón "Eliminar" -> abrir modal
-        btnEliminar.addEventListener("click", function () {
-            if (!codigoInput.value) {
-                alert("Por favor, seleccione un registro para eliminar.");
-                return;
-            }
-            // SET hidden field
-            document.getElementById("codigoEliminar").value = codigoInput.value;
+      // Nuevo
+      btnNuevo?.addEventListener("click", () => {
+        const form = $("#frmEspecialidad");
+        form?.reset();
+        setVal("Codigo", 0);
+        if (selectedRow) selectedRow.classList.remove("table-active");
+        selectedRow = null;
+        selectedId = 0;
+        setDisabled(btnEditar, true);
+        setDisabled(btnEliminar, true);
+        setDisabled(btnGuardar, false);
+        openEspModal();
+        setTimeout(() => $("#Especialidad")?.focus(), 150);
+      });
 
-            // Texto amigable
-            if (confirmText) {
-                confirmText.textContent = `¿Eliminar la especialidad "${especialidadInput.value}" (Código: ${codigoInput.value})?`;
-            }
+      // Editar
+      btnEditar?.addEventListener("click", () => {
+        if (!selectedId) { alert("Selecciona una especialidad de la tabla."); return; }
+        openEspModal();
+        setTimeout(() => $("#Especialidad")?.focus(), 150);
+      });
 
-            const modal = getBsModal();
-            if (modal) modal.show();
-            else {
-                // Fallback si no está el JS de Bootstrap
-                if (confirm(confirmText.textContent)) formEliminar.submit();
-            }
-        });
+      // Guardar (modal)
+      $("#btnGuardarModalEspecialidad")?.addEventListener("click", () => {
+        $("#frmEspecialidad")?.submit();
+      });
 
-        // Confirmar eliminación en el modal
-        btnConfirmarEliminar.addEventListener("click", function () {
-            formEliminar.submit();
-        });
+      // Guardar (barra) ya envía el mismo form vía atributo form="frmEspecialidad"
 
-        // Buscador
-        buscadorInput.addEventListener("keyup", function () {
-            const searchText = this.value.toLowerCase().trim();
-            filas.forEach(fila => {
-                const e = fila.dataset.especialidad.toLowerCase();
-                const d = fila.dataset.descripcion.toLowerCase();
-                fila.style.display = (e.includes(searchText) || d.includes(searchText)) ? "" : "none";
-            });
-        });
+      // Eliminar -> confirm
+      btnEliminar?.addEventListener("click", () => {
+        if (!selectedId) { alert("Selecciona una especialidad de la tabla."); return; }
+        $("#hdnEliminarCodigoEsp").value = selectedId;
+        const texto = `¿Eliminar la especialidad "${selectedRow?.dataset?.especialidad ?? ''}" (Código: ${selectedId})?`;
+        if (confirmText) confirmText.textContent = texto;
+
+        if (hasBS) new bootstrap.Modal(modalConfirmEl).show();
+        else if (confirm(texto)) $("#frmEliminarEsp").submit();
+      });
+
+      // Confirmar eliminación
+      btnConfirmarEliminar?.addEventListener("click", () => {
+        $("#frmEliminarEsp").submit();
+      });
+
+      // Habilitar Guardar si cambian campos del form del modal
+      document.addEventListener("input", (ev) => {
+        if (ev.target.closest("#frmEspecialidad")) setDisabled(btnGuardar, false);
+      });
+      document.addEventListener("change", (ev) => {
+        if (ev.target.closest("#frmEspecialidad")) setDisabled(btnGuardar, false);
+      });
     });
 </script>
